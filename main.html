@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short URL Redirection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .info-text {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .redirect-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Short URL Redirection</h1>
+        
+        <p class="info-text">To access the content, click the button below. Note: This is a real website link.</p>
+
+        <!-- Replace "https://www.mediafire.com/folder/pkp5eai7xvhxh/Q_paper_and_ans_key" with the desired URL -->
+        <button class="redirect-button" onclick="redirectToWebsite('https://example.com')">Go to Real Website</button>
+
+        <script>
+            function redirectToWebsite(url) {
+                window.location.href = url;
+            }
+        </script>
+    </div>
+
+</body>
+</html>
