@@ -1,2 +1,2 @@
-[https://3389-43-229-88-172.ngrok-free.app]
-(vist.com)
+https://3389-43-229-88-172.ngrok-free.app
+
